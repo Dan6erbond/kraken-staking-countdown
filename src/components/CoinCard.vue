@@ -23,7 +23,6 @@
           (c) => c.symbol.toLowerCase() === coin.symbol.toLowerCase(),
         );
         if (stakingCoin) {
-          console.log("stakingCoin");
           stakingAmount.value = stakingCoin.stakedAmount;
         }
       }

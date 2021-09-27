@@ -223,6 +223,8 @@
           "
           v-model="stakingAmount"
           type="number"
+          pattern="[0-9]*"
+          novalidate
         />
         <button
           class="text-dark-blue-400 flex-shrink-0"

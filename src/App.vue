@@ -35,9 +35,9 @@
       market.value &&
       stakingCoins.map((coin) => ({
         ...coin,
-        coinGecko: market.value!.find(
+        market: market.value!.find(
           ({ symbol }) => symbol.toLowerCase() === coin.symbol.toLowerCase(),
-        )!,
+        ),
       })),
   );
 
@@ -67,7 +67,7 @@
         v-for="coin in coinsList"
         :key="coin.symbol"
         :coin="coin"
-        :coinMarket="coin.coinGecko"
+        :coinMarket="coin.market!"
       />
     </div>
   </div>

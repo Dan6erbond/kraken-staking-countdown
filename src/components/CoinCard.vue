@@ -166,7 +166,7 @@
           space-x-2
         "
       >
-        <span>{{ coinMarket.symbol.toUpperCase() }}</span>
+        <span class="flex-shrink-0">{{ coinMarket.symbol.toUpperCase() }}</span>
         <div class="self-stretch border-r border-dark-blue-500"></div>
         <input
           class="
@@ -176,13 +176,19 @@
             focus:ring-0
             bg-transparent
             border-transparent
-            flex-grow
             p-0
+            flex-grow flex-shrink
+            box-border
+            w-6
+            md:w-auto
           "
           v-model="stakingAmount"
           type="number"
         />
-        <button class="text-dark-blue-400" @click="stakingAmount = 0">
+        <button
+          class="text-dark-blue-400 flex-shrink-0"
+          @click="stakingAmount = 0"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-5 w-5"

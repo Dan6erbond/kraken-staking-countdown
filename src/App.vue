@@ -13,7 +13,7 @@
         .filter(
           ({ symbol }) =>
             stakingCoins
-              .map(({ currency }) => currency.toLowerCase())
+              .map(({ symbol }) => symbol.toLowerCase())
               .indexOf(symbol) !== -1,
         )
         .map(({ id }) => id),
@@ -29,7 +29,7 @@
       stakingCoins.map((coin) => ({
         ...coin,
         coinGecko: market.value!.find(
-          ({ symbol }) => symbol.toLowerCase() === coin.currency.toLowerCase(),
+          ({ symbol }) => symbol.toLowerCase() === coin.symbol.toLowerCase(),
         )!,
       })),
   );
@@ -88,7 +88,7 @@
     <div v-else class="flex flex-col p-4 space-y-6">
       <CoinCard
         v-for="coin in coinsList"
-        :key="coin.currency"
+        :key="coin.symbol"
         :coin="coin"
         :coinMarket="coin.coinGecko"
       />

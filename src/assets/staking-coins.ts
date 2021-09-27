@@ -1,5 +1,5 @@
 export interface StakingCoin {
-  currency: string;
+  symbol: string;
   rpy: number | [number, number];
   stakeMinimum: number;
   rewardSchedule: { text: string; cron: string };
@@ -9,7 +9,7 @@ export interface StakingCoin {
 
 export const stakingCoins: StakingCoin[] = [
   {
-    currency: "ADA",
+    symbol: "ADA",
     rpy: [0.04, 0.06],
     stakeMinimum: 0.000001,
     rewardSchedule: {
@@ -18,7 +18,7 @@ export const stakingCoins: StakingCoin[] = [
     },
   },
   {
-    currency: "ATOM",
+    symbol: "ATOM",
     rpy: 0.07,
     stakeMinimum: 0.2,
     rewardSchedule: {
@@ -27,7 +27,7 @@ export const stakingCoins: StakingCoin[] = [
     },
   },
   {
-    currency: "ETH",
+    symbol: "ETH",
     rpy: [0.04, 0.07],
     stakeMinimum: 0.00001,
     rewardSchedule: {
@@ -36,7 +36,7 @@ export const stakingCoins: StakingCoin[] = [
     },
   },
   {
-    currency: "FLOW",
+    symbol: "FLOW",
     rpy: 0.046,
     stakeMinimum: 0.2,
     rewardSchedule: {
@@ -45,7 +45,7 @@ export const stakingCoins: StakingCoin[] = [
     },
   },
   {
-    currency: "KAVA",
+    symbol: "KAVA",
     rpy: 0.2,
     stakeMinimum: 0.2,
     rewardSchedule: {
@@ -54,7 +54,7 @@ export const stakingCoins: StakingCoin[] = [
     },
   },
   {
-    currency: "KSM",
+    symbol: "KSM",
     rpy: 0.12,
     stakeMinimum: 0.2,
     rewardSchedule: {
@@ -63,7 +63,7 @@ export const stakingCoins: StakingCoin[] = [
     },
   },
   {
-    currency: "DOT",
+    symbol: "DOT",
     rpy: 0.12,
     stakeMinimum: 0.2,
     rewardSchedule: {
@@ -72,7 +72,7 @@ export const stakingCoins: StakingCoin[] = [
     },
   },
   {
-    currency: "SOL",
+    symbol: "SOL",
     rpy: 0.065,
     stakeMinimum: 0.000001,
     rewardSchedule: {
@@ -81,7 +81,7 @@ export const stakingCoins: StakingCoin[] = [
     },
   },
   {
-    currency: "XTZ",
+    symbol: "XTZ",
     rpy: 0.055,
     stakeMinimum: 0.000001,
     rewardSchedule: {

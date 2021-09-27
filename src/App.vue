@@ -3,7 +3,11 @@
   import { currency } from "./app/store";
   import { stakingCoins } from "./assets/staking-coins";
   import CoinCard from "./components/CoinCard.vue";
-  import { useCoinsList, useCoinsMarket } from "./hooks/coingecko";
+  import {
+    useCoinsList,
+    useCoinsMarket,
+    useSupportedVsCurrencies,
+  } from "./hooks/coingecko";
 
   const { coins } = useCoinsList();
   const ids = computed(
@@ -32,6 +36,16 @@
           ({ symbol }) => symbol.toLowerCase() === coin.symbol.toLowerCase(),
         )!,
       })),
+  );
+
+  const { vsCurrencies } = useSupportedVsCurrencies();
+
+  const currencies = computed(
+    () =>
+      vsCurrencies.value &&
+      [...vsCurrencies.value].sort((currency1) =>
+        currency.value.toLowerCase() === currency1.toLowerCase() ? -1 : 1,
+      ),
   );
 
   onMounted(() => {
@@ -82,6 +96,28 @@
         <span>Kraken</span>
         <span>Staking</span>
         <span>Rewards</span>
+      </div>
+    </div>
+    <div class="flex flex-col px-4 pt-4 space-y-4">
+      <span>Currency</span>
+      <div class="flex space-x-2 overflow-auto pb-4">
+        <div
+          v-for="curr in currencies"
+          :key="curr"
+          :class="[
+            'bg-dark-blue-700',
+            'hover:bg-dark-blue-600',
+            'rounded',
+            'shadow',
+            'px-2',
+            'py-1',
+            'cursor-pointer',
+            curr === currency && ['bg-dark-blue-900', 'hover:bg-dark-blue-800'],
+          ]"
+          @click="currency = curr"
+        >
+          {{ curr.toUpperCase() }}
+        </div>
       </div>
     </div>
     <div v-if="!coinsList"></div>

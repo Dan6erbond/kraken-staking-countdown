@@ -1,11 +1,12 @@
 <script setup lang="ts">
   import parser from "cron-parser";
-  import { computed, defineProps, onMounted, ref, toRefs, watch } from "vue";
-  import { currency, coins } from "../app/store";
+  import { computed, onMounted, ref, toRefs, watch } from "vue";
+  import { coins, currency } from "../app/store";
   import { StakingCoin } from "../assets/staking-coins";
   import { CoinMarket } from "../hooks/coingecko";
   import { formatAsCurrency, formatTime } from "../utils/formatting";
 
+  // eslint-disable-next-line no-undef
   const props = defineProps<{
     coin: StakingCoin;
     coinMarket: CoinMarket;

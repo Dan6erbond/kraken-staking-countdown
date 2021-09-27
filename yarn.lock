@@ -728,6 +728,13 @@ cosmiconfig@^7.0.1:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
+cron-parser@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/cron-parser/-/cron-parser-4.0.0.tgz#2198c42c0a8a57ccbe55d3c377867b1fec336a13"
+  integrity sha512-qm3mz+FBmswzQHzxndzHba9W899FcP+MJ1+PAcaUQgysolTUmJkz9j1E+rUvGgjkCi4Z6WkU9t0mO4ei96kM+A==
+  dependencies:
+    luxon "^1.26.0"
+
 cross-spawn@^7.0.2:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
@@ -1598,6 +1605,11 @@ lru-cache@^6.0.0:
   integrity sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==
   dependencies:
     yallist "^4.0.0"
+
+luxon@^1.26.0:
+  version "1.28.0"
+  resolved "https://registry.yarnpkg.com/luxon/-/luxon-1.28.0.tgz#e7f96daad3938c06a62de0fb027115d251251fbf"
+  integrity sha512-TfTiyvZhwBYM/7QdAVDh+7dBTBA29v4ik0Ce9zda3Mnf8on1S5KJI8P2jKFZ8+5C0jhmr0KwJEO/Wdpm0VeWJQ==
 
 magic-string@^0.25.7:
   version "0.25.7"

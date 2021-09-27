@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fontsource/inter": "^4.5.0",
+    "cron-parser": "^4.0.0",
     "vue": "^3.2.6"
   },
   "devDependencies": {

@@ -10,6 +10,7 @@
     useCoinsMarket,
     useSupportedVsCurrencies,
   } from "./hooks/coingecko";
+  import Overview from "./components/Overview.vue";
 
   const { coins } = useCoinsList();
   const ids = computed(
@@ -60,6 +61,7 @@
   >
     <Header />
     <CurrencySelector v-if="vsCurrencies" :currencies="vsCurrencies" />
+    <Overview v-if="market" :coinsMarket="market" />
     <div v-if="coinsList" class="flex flex-col p-4 space-y-6">
       <CoinCard
         v-for="coin in coinsList"

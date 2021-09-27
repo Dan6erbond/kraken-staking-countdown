@@ -1,7 +1,7 @@
 export const formatAsCurrency = (value: number) => {
   return value.toLocaleString("en-US", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
+    minimumFractionDigits: value > 0.1 ? 2 : 5,
+    maximumFractionDigits: value > 0.1 ? 2 : 5,
   });
 };
 

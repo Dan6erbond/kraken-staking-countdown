@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { computed, onMounted } from "vue";
-  import { currency } from "./app/store";
+  import { currency, favoriteCoins } from "./app/store";
   import { stakingCoins } from "./assets/staking-coins";
   import CoinCard from "./components/CoinCard.vue";
   import CurrencySelector from "./components/CurrencySelector.vue";
@@ -33,12 +33,16 @@
   const coinsList = computed(
     () =>
       market.value &&
-      stakingCoins.map((coin) => ({
-        ...coin,
-        market: market.value!.find(
-          ({ symbol }) => symbol.toLowerCase() === coin.symbol.toLowerCase(),
-        )!,
-      })),
+      stakingCoins
+        .map((coin) => ({
+          ...coin,
+          market: market.value!.find(
+            ({ symbol }) => symbol.toLowerCase() === coin.symbol.toLowerCase(),
+          )!,
+        }))
+        .sort((coin) =>
+          favoriteCoins.value.indexOf(coin.symbol) === -1 ? 1 : -1,
+        ),
   );
 
   const { vsCurrencies } = useSupportedVsCurrencies();

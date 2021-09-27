@@ -9,8 +9,12 @@
   const currencies = computed(
     () =>
       currs.value &&
-      [...currs.value].sort((currency1) =>
-        currency.value.toLowerCase() === currency1.toLowerCase() ? -1 : 1,
+      [...currs.value].sort((currency1, currency2) =>
+        currency.value.toLowerCase() === currency1.toLowerCase()
+          ? -1
+          : currency1 > currency2
+          ? 1
+          : 0,
       ),
   );
 </script>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import parser from "cron-parser";
-  import { computed, defineProps, onMounted, ref, toRefs } from "vue";
-  import { currency } from "../app/store";
+  import { computed, defineProps, onMounted, ref, toRefs, watch } from "vue";
+  import { currency, coins } from "../app/store";
   import { StakingCoin } from "../assets/staking-coins";
   import { CoinMarket } from "../hooks/coingecko";
   import { formatAsCurrency, formatTime } from "../utils/formatting";
@@ -14,6 +14,46 @@
   const { coin } = toRefs(props);
 
   const stakingAmount = ref<number>();
+
+  watch(
+    [coin, coins],
+    ([coin, coins]) => {
+      if (coins) {
+        const stakingCoin = coins.find(
+          (c) => c.symbol.toLowerCase() === coin.symbol.toLowerCase(),
+        );
+        if (stakingCoin) {
+          console.log("stakingCoin");
+          stakingAmount.value = stakingCoin.stakedAmount;
+        }
+      }
+    },
+    { immediate: true },
+  );
+
+  watch(stakingAmount, (stakingAmount) => {
+    if (!stakingAmount) return;
+    if (
+      coins.value.find(
+        (c) => c.symbol.toLowerCase() === coin.value.symbol.toLowerCase(),
+      )
+    ) {
+      coins.value = coins.value.map((c) => {
+        if (c.symbol.toLowerCase() === coin.value.symbol.toLowerCase()) {
+          return {
+            ...c,
+            stakedAmount: stakingAmount,
+          };
+        }
+        return c;
+      });
+    } else {
+      coins.value = [
+        ...coins.value,
+        { symbol: coin.value.symbol, stakedAmount: stakingAmount },
+      ];
+    }
+  });
 
   const yearlyPayouts = computed(() => {
     const currentYear = new Date().getFullYear();
@@ -161,24 +201,32 @@
       </div>
       <span class="text-sm text-gray-300 text-right">
         <span class="font-bold">Expected Payout</span>
-        {{ formatAsCurrency((stakingAmount * averageRpy) / yearlyPayouts) }}
+        {{
+          stakingAmount
+            ? formatAsCurrency((stakingAmount * averageRpy) / yearlyPayouts)
+            : "-"
+        }}
         {{ coinMarket.symbol.toUpperCase() }} /
         {{
-          formatAsCurrency(
-            ((stakingAmount * averageRpy) / yearlyPayouts) *
-              coinMarket.current_price,
-          )
+          stakingAmount
+            ? formatAsCurrency(
+                ((stakingAmount * averageRpy) / yearlyPayouts) *
+                  coinMarket.current_price,
+              )
+            : "-"
         }}
         {{ currency.toUpperCase() }}
       </span>
       <span class="text-sm text-gray-300 text-right">
         <span class="font-bold">Yearly</span>
-        {{ formatAsCurrency(stakingAmount * averageRpy) }}
+        {{ stakingAmount ? formatAsCurrency(stakingAmount * averageRpy) : "-" }}
         {{ coinMarket.symbol.toUpperCase() }} /
         {{
-          formatAsCurrency(
-            stakingAmount * averageRpy * coinMarket.current_price,
-          )
+          stakingAmount
+            ? formatAsCurrency(
+                stakingAmount * averageRpy * coinMarket.current_price,
+              )
+            : "-"
         }}
         {{ currency.toUpperCase() }}
       </span>

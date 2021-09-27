@@ -79,3 +79,22 @@ export const useCoinsMarket = ({ vsCurrency, ids }: UseCoinsMarketArgs) => {
 
   return { coins };
 };
+
+export const useSupportedVsCurrencies = () => {
+  const vsCurrencies = ref<string[]>();
+
+  fetch("https://api.coingecko.com/api/v3/simple/supported_vs_currencies").then(
+    (res) => {
+      res
+        .json()
+        .then((data) => {
+          vsCurrencies.value = data;
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    },
+  );
+
+  return { vsCurrencies };
+};

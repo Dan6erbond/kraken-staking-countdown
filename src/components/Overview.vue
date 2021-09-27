@@ -2,7 +2,7 @@
   import { computed, toRefs } from "@vue/reactivity";
   import parser from "cron-parser";
   import { ref } from "vue";
-  import { coins, currency } from "../app/store";
+  import { coins, currency, favoriteCoins } from "../app/store";
   import { stakingCoins } from "../assets/staking-coins";
   import { CoinMarket } from "../hooks/coingecko";
   import { formatAsCurrency } from "../utils/formatting";
@@ -68,6 +68,7 @@
     const data = {
       coins: coins.value,
       currency: currency.value,
+      favoriteCoins: favoriteCoins.value,
     };
     return `data:text/json;charset=utf-8,${encodeURIComponent(
       JSON.stringify(data, null, 2),
@@ -90,6 +91,7 @@
 
       if (data.coins) coins.value = data.coins;
       if (data.currency) currency.value = data.currency;
+      if (data.favoriteCoins) favoriteCoins.value = data.favoriteCoins;
 
       loadingImportFile.value = false;
     });

@@ -37,7 +37,7 @@
         ...coin,
         market: market.value!.find(
           ({ symbol }) => symbol.toLowerCase() === coin.symbol.toLowerCase(),
-        ),
+        )!,
       })),
   );
 
@@ -67,7 +67,7 @@
         v-for="coin in coinsList"
         :key="coin.symbol"
         :coin="coin"
-        :coinMarket="coin.market!"
+        :coinMarket="coin.market"
       />
     </div>
   </div>

@@ -223,6 +223,12 @@
           icon="https://assets.coingecko.com/coins/images/4380/large/download.png?1547039725"
           wallet-address-color="#9CA3AF"
         />
+        <crypto-wallet-widget
+          currency="XMR"
+          wallet-address="4BF4HPudpdyXig9KSm6PbhYZTUKXvMVJDfNSR2rVPmRqWbETtzvcPS6Ram9BW9VC7d5ZLMTur3pq9cTu8qUyiWnL1FENRrb"
+          icon="https://assets.coingecko.com/coins/images/69/small/monero_logo.png?1547033729"
+          wallet-address-color="#9CA3AF"
+        />
 
         <p class="text-sm text-gray-400 text-right">
           Crypto Wallet Widget built by Dan6erbond.

@@ -65,7 +65,42 @@
   >
     <Header />
     <CurrencySelector v-if="vsCurrencies" :currencies="vsCurrencies" />
+    <div v-else class="flex space-x-2 overflow-auto m-4 pb-4">
+      <div
+        class="
+          border border-dark-blue-600
+          shadow
+          rounded-md
+          p-2
+          flex
+          items-center
+          justify-center
+        "
+        v-for="i in 20"
+        :key="i"
+      >
+        <div class="h-3 bg-dark-blue-500 rounded w-6"></div>
+      </div>
+    </div>
     <Overview v-if="market" :coinsMarket="market" />
+    <div v-else class="p-4 flex space-x-6">
+      <div
+        class="border border-dark-blue-600 shadow rounded-md p-4"
+        v-for="i in 2"
+        :key="i"
+      >
+        <div class="animate-pulse flex space-x-4">
+          <div class="rounded-full bg-dark-blue-500 h-12 w-12"></div>
+          <div class="flex-1 space-y-4 py-1">
+            <div class="h-4 bg-dark-blue-500 rounded w-3/4"></div>
+            <div class="space-y-2">
+              <div class="h-4 bg-dark-blue-500 rounded"></div>
+              <div class="h-4 bg-dark-blue-500 rounded w-5/6"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div v-if="coinsList" class="flex flex-col p-4 space-y-6">
       <CoinCard
         v-for="coin in coinsList"
@@ -73,6 +108,25 @@
         :coin="coin"
         :coinMarket="coin.market"
       />
+    </div>
+    <div v-else class="p-4 flex flex-col space-y-6">
+      <div
+        class="border border-dark-blue-600 shadow rounded-md p-4"
+        v-for="i in 10"
+        :key="i"
+      >
+        <div class="animate-pulse flex space-x-4">
+          <div class="rounded-full bg-dark-blue-500 h-12 w-12"></div>
+          <div class="flex-1 space-y-4 py-1">
+            <div class="h-4 bg-dark-blue-500 rounded w-3/4"></div>
+            <div class="space-y-2">
+              <div class="h-4 bg-dark-blue-500 rounded"></div>
+              <div class="h-4 bg-dark-blue-500 rounded"></div>
+              <div class="h-4 bg-dark-blue-500 rounded w-5/6"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="flex flex-col space-y-4 p-8 items-center">
       <div class="flex space-x-4">

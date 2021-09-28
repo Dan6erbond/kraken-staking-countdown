@@ -11,6 +11,7 @@
     useSupportedVsCurrencies,
   } from "./hooks/coingecko";
   import Overview from "./components/Overview.vue";
+  import { wallets } from "./assets/wallets";
 
   const { coins } = useCoinsList();
   const ids = computed(
@@ -228,60 +229,22 @@
           <span>Support Me</span>
         </div>
 
-        <p>Kraken Staking Rewards is built by a crypto lover just like you!</p>
+        <p>
+          Kraken Staking Rewards is built by a crypto enthusiast just like you!
+        </p>
         <p class="pb-2 text-sm text-gray-400">
           Support me by donating some crypto to help cover development and
           project-related costs.
         </p>
 
         <crypto-wallet-widget
-          currency="BTC"
-          wallet-address="bc1qzevkywtd6p0fupn08hlqp4d6sfuplmvfscwf05"
-          icon="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579"
-          wallet-address-color="#9CA3AF"
-        />
-        <crypto-wallet-widget
-          currency="ETH"
-          wallet-address="0x31cD9e4d146B926beB5C1D6BAB86B1cA7a89F828"
-          icon="https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880"
-          wallet-address-color="#9CA3AF"
-        />
-        <crypto-wallet-widget
-          currency="ADA"
-          wallet-address="addr1q9s34mhdk9w32m6w7yme8ejprqhgsz750zv27y3e2hfcrcnprthwmv2az4h5aufhj0nyzxpw3q9ag7yc4ufrj4wns83qkadsdv"
-          icon="https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860"
-          qr-code-logo-image="https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860"
-          wallet-address-color="#9CA3AF"
-        />
-        <crypto-wallet-widget
-          currency="SOL"
-          wallet-address="5ENP1d54bKDZwL1jyw7qrZv9tVxnxpKkkeYApMQMZ6xD"
-          icon="https://assets.coingecko.com/coins/images/4128/large/coinmarketcap-solana-200.png?1616489452"
-          wallet-address-color="#9CA3AF"
-        />
-        <crypto-wallet-widget
-          currency="DOT"
-          wallet-address="14oVXWRFR9bU5keVmbxs3mEJr9DYSi1an4GdTt1HhYdAMqpy"
-          icon="https://assets.coingecko.com/coins/images/12171/large/aJGBjJFU_400x400.jpg?1597804776"
-          wallet-address-color="#9CA3AF"
-        />
-        <crypto-wallet-widget
-          currency="ATOM"
-          wallet-address="cosmos1e4rz6y3ah89qfltgcftu3ry89xryn60ztf5ken"
-          icon="https://assets.coingecko.com/coins/images/1481/large/cosmos_hub.png?1555657960"
-          wallet-address-color="#9CA3AF"
-        />
-        <crypto-wallet-widget
-          currency="ALGO"
-          wallet-address="3RYOY2LTPC6GLT3ZYE4LUFGGAEMY7GRENZQO7RFNGK2LGCV77QNASK6C6Y"
-          icon="https://assets.coingecko.com/coins/images/4380/large/download.png?1547039725"
-          wallet-address-color="#9CA3AF"
-        />
-        <crypto-wallet-widget
-          currency="XMR"
-          wallet-address="4BF4HPudpdyXig9KSm6PbhYZTUKXvMVJDfNSR2rVPmRqWbETtzvcPS6Ram9BW9VC7d5ZLMTur3pq9cTu8qUyiWnL1FENRrb"
-          icon="https://assets.coingecko.com/coins/images/69/small/monero_logo.png?1547033729"
-          wallet-address-color="#9CA3AF"
+          v-for="wallet in wallets"
+          :key="wallet.currency"
+          :currency="wallet.currency"
+          :wallet-address="wallet.walletAddress"
+          :icon="wallet.icon"
+          :qr-code-logo-image="wallet.qrCodeLogoImage"
+          :wallet-address-color="wallet.walletAddressColor"
         />
 
         <p class="text-sm text-gray-400 text-right">

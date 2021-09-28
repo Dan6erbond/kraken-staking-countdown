@@ -155,6 +155,85 @@
           <span>Submit a feature request!</span>
         </a>
       </div>
+      <div class="flex flex-col space-y-2 w-full items-stretch pt-2">
+        <div class="flex items-center space-x-2 text-2xl font-bold">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"
+            />
+          </svg>
+          <span>Support Me</span>
+        </div>
+
+        <p>Kraken Staking Rewards is built by a crypto lover just like you!</p>
+        <p class="pb-2 text-sm text-gray-400">
+          Support me by donating some crypto to help cover development and
+          project-related costs.
+        </p>
+
+        <crypto-wallet-widget
+          currency="BTC"
+          wallet-address="bc1qzevkywtd6p0fupn08hlqp4d6sfuplmvfscwf05"
+          icon="https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579"
+          wallet-address-color="#9CA3AF"
+        />
+        <crypto-wallet-widget
+          currency="ETH"
+          wallet-address="bc1qzevkywtd6p0fupn08hlqp4d6sfuplmvfscwf05"
+          icon="https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880"
+          wallet-address-color="#9CA3AF"
+        />
+        <crypto-wallet-widget
+          currency="ADA"
+          wallet-address="addr1q9s34mhdk9w32m6w7yme8ejprqhgsz750zv27y3e2hfcrcnprthwmv2az4h5aufhj0nyzxpw3q9ag7yc4ufrj4wns83qkadsdv"
+          icon="https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860"
+          qr-code-logo-image="https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860"
+          wallet-address-color="#9CA3AF"
+        />
+        <crypto-wallet-widget
+          currency="SOL"
+          wallet-address="5ENP1d54bKDZwL1jyw7qrZv9tVxnxpKkkeYApMQMZ6xD"
+          icon="https://assets.coingecko.com/coins/images/4128/large/coinmarketcap-solana-200.png?1616489452"
+          wallet-address-color="#9CA3AF"
+        />
+        <crypto-wallet-widget
+          currency="DOT"
+          wallet-address="14oVXWRFR9bU5keVmbxs3mEJr9DYSi1an4GdTt1HhYdAMqpy"
+          icon="https://assets.coingecko.com/coins/images/12171/large/aJGBjJFU_400x400.jpg?1597804776"
+          wallet-address-color="#9CA3AF"
+        />
+        <crypto-wallet-widget
+          currency="ATOM"
+          wallet-address="cosmos1e4rz6y3ah89qfltgcftu3ry89xryn60ztf5ken"
+          icon="https://assets.coingecko.com/coins/images/1481/large/cosmos_hub.png?1555657960"
+          wallet-address-color="#9CA3AF"
+        />
+        <crypto-wallet-widget
+          currency="ALGO"
+          wallet-address="3RYOY2LTPC6GLT3ZYE4LUFGGAEMY7GRENZQO7RFNGK2LGCV77QNASK6C6Y"
+          icon="https://assets.coingecko.com/coins/images/4380/large/download.png?1547039725"
+          wallet-address-color="#9CA3AF"
+        />
+
+        <p class="text-sm text-gray-400 text-right">
+          Crypto Wallet Widget built by Dan6erbond.
+        </p>
+      </div>
     </div>
   </div>
 </template>
+
+<style lang="postcss">
+  crypto-wallet-widget {
+    @apply bg-dark-blue-800 text-sm p-2 rounded;
+  }
+</style>

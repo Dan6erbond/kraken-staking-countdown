@@ -188,7 +188,7 @@
         />
         <crypto-wallet-widget
           currency="ETH"
-          wallet-address="bc1qzevkywtd6p0fupn08hlqp4d6sfuplmvfscwf05"
+          wallet-address="0x31cD9e4d146B926beB5C1D6BAB86B1cA7a89F828"
           icon="https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880"
           wallet-address-color="#9CA3AF"
         />

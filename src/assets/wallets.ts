@@ -48,7 +48,7 @@ export const wallets: Wallet[] = [
   },
   {
     currency: "ALGO",
-    walletAddress: "3RYOY2LTPC6GLT3ZYE4LUFGGAEMY7GRENZQO7RFNGK2LGCV77QNASK6C6Y",
+    walletAddress: "ZVHQ7UXHMQP6A5LX5KNHWHWXJNQEF6WRHWUE2N3OO4RUFIXHQIMUXLVCE4",
     icon: "https://assets.coingecko.com/coins/images/4380/large/download.png?1547039725",
     walletAddressColor: "#9CA3AF",
   },

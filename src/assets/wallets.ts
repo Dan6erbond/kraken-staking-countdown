@@ -59,4 +59,11 @@ export const wallets: Wallet[] = [
     icon: "https://assets.coingecko.com/coins/images/69/small/monero_logo.png?1547033729",
     walletAddressColor: "#9CA3AF",
   },
+  {
+    currency: "NANO",
+    walletAddress:
+      "nano_14kk4u6tpka567szjs98ng1zkfnjpq7cbprxiatd3dycs9m1num3cu83osba",
+    icon: "https://assets.coingecko.com/coins/images/756/small/nano-coin-logo.png?1547034501",
+    walletAddressColor: "#9CA3AF",
+  },
 ];

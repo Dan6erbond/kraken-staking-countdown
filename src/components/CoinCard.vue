@@ -4,6 +4,7 @@
   import { coins, currency, favoriteCoins } from "../app/store";
   import { StakingCoin } from "../assets/staking-coins";
   import { CoinMarket } from "../hooks/coingecko";
+  import { getCoinAverageRpy, getCoinYearlyPayouts } from "../utils/coins";
   import { formatAsCurrency, formatTime } from "../utils/formatting";
 
   // eslint-disable-next-line no-undef
@@ -58,26 +59,8 @@
     }
   });
 
-  const yearlyPayouts = computed(() => {
-    const currentYear = new Date().getFullYear();
-    const res = parser.parseExpression(coin.value.rewardSchedule.cron, {
-      currentDate: new Date(currentYear, 0, 1),
-      tz: "UTC",
-    });
-    let next = res.next();
-    const yearlyPayouts = [];
-    while (res.hasNext() && next.getFullYear() < currentYear + 1) {
-      yearlyPayouts.push(next);
-      next = res.next();
-    }
-    return yearlyPayouts.length;
-  });
-
-  const averageRpy = computed(() =>
-    Array.isArray(coin.value.rpy)
-      ? coin.value.rpy.reduce((a, b) => a + b, 0) / coin.value.rpy.length
-      : coin.value.rpy,
-  );
+  const yearlyPayouts = computed(() => getCoinYearlyPayouts(coin.value).length);
+  const averageRpy = computed(() => getCoinAverageRpy(coin.value));
 
   const nextPayout = computed(() =>
     parser

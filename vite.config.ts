@@ -31,7 +31,7 @@ export default defineConfig({
         short_name: "Kraken Staking",
         description:
           "Calculator and tracker for staking rewards on the Kraken exchange.",
-        theme_color: "#f9d85d",
+        theme_color: "#1c2435",
         background_color: "#1c2435",
         icons: [
           {

@@ -1,17 +1,18 @@
 <script setup lang="ts">
+  import { useRegisterSW } from "virtual:pwa-register/vue";
   import { computed, onMounted } from "vue";
   import { currency, favoriteCoins } from "./app/store";
   import { stakingCoins } from "./assets/staking-coins";
+  import { wallets } from "./assets/wallets";
   import CoinCard from "./components/CoinCard.vue";
   import CurrencySelector from "./components/CurrencySelector.vue";
   import Header from "./components/Header.vue";
+  import Overview from "./components/Overview.vue";
   import {
     useCoinsList,
     useCoinsMarket,
     useSupportedVsCurrencies,
   } from "./hooks/coingecko";
-  import Overview from "./components/Overview.vue";
-  import { wallets } from "./assets/wallets";
 
   const { coins } = useCoinsList();
   const ids = computed(
@@ -50,6 +51,28 @@
 
   onMounted(() => {
     document.body.classList.add("dark");
+  });
+
+  const intervalMS = 60 * 60 * 1000;
+
+  const { updateServiceWorker } = useRegisterSW({
+    onNeedRefresh() {
+      if (confirm("An update is available! Would you like to refresh?")) {
+        updateServiceWorker();
+      }
+    },
+    onOfflineReady() {
+      alert("The app is ready to use offline.");
+    },
+    onRegisterError(error) {
+      alert(`The app's service worker ran into an error:\n${error}`);
+    },
+    onRegistered(r) {
+      r &&
+        setInterval(() => {
+          r.update();
+        }, intervalMS);
+    },
   });
 </script>
 

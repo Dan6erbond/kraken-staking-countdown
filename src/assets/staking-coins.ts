@@ -89,4 +89,13 @@ export const stakingCoins: StakingCoin[] = [
       cron: "0 1 * * 1,4",
     },
   },
+  {
+    symbol: "ALGO",
+    rpy: 0.0475,
+    stakeMinimum: 0.000001,
+    rewardSchedule: {
+      text: "Thursday Starting at 01:30 UTC",
+      cron: "30 1 * * 4",
+    },
+  },
 ];

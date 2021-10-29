@@ -10,16 +10,14 @@ export const calculateStakingRewards = (
     currentDate: since,
     endDate: new Date(),
   });
-  let rewardsCount = 0;
+  let newStakedAmount = stakedAmount;
   while (res.hasNext()) {
-    rewardsCount++;
+    newStakedAmount +=
+      (getCoinAverageRpy(coin) * newStakedAmount) /
+      getCoinYearlyPayouts(coin).length;
     res.next();
   }
-  const rewards =
-    ((getCoinAverageRpy(coin) * stakedAmount) /
-      getCoinYearlyPayouts(coin).length) *
-    rewardsCount;
-  return rewards;
+  return newStakedAmount - stakedAmount;
 };
 
 export const getCoinYearlyPayouts = ({ rewardSchedule }: StakingCoin) => {

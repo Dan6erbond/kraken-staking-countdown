@@ -36,7 +36,7 @@
   );
 
   watch(stakingAmount, (stakingAmount) => {
-    if (!stakingAmount) return;
+    if (stakingAmount === undefined) return;
     if (
       coins.value.find(
         (c) => c.symbol.toLowerCase() === coin.value.symbol.toLowerCase(),

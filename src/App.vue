@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { useRegisterSW } from "virtual:pwa-register/vue";
-  import { computed, onMounted } from "vue";
+  import { computed, onMounted, ref } from "vue";
   import { currency, favoriteCoins } from "./app/store";
   import { stakingCoins } from "./assets/staking-coins";
   import { wallets } from "./assets/wallets";
@@ -55,11 +55,17 @@
 
   const intervalMS = 60 * 60 * 1000;
 
+  const showUpdateAvailable = ref(false);
+  onMounted(() => {
+    if (import.meta.env.DEV) {
+      setTimeout(() => {
+        showUpdateAvailable.value = true;
+      }, 1000);
+    }
+  });
   const { updateServiceWorker } = useRegisterSW({
     onNeedRefresh() {
-      if (confirm("An update is available! Would you like to refresh?")) {
-        updateServiceWorker();
-      }
+      showUpdateAvailable.value = true;
     },
     onOfflineReady() {
       alert("The app is ready to use offline.");
@@ -74,6 +80,11 @@
         }, intervalMS);
     },
   });
+
+  function update() {
+    updateServiceWorker();
+    showUpdateAvailable.value = true;
+  }
 </script>
 
 <template>
@@ -274,6 +285,41 @@
           Crypto Wallet Widget built by Dan6erbond.
         </p>
       </div>
+    </div>
+    <div
+      :class="[
+        'fixed',
+        'left-0',
+        'w-screen',
+        'h-16',
+        'md:h-20',
+        'bg-gray-700',
+        'flex',
+        'items-center',
+        'justify-between',
+        'p-6',
+        showUpdateAvailable ? 'bottom-0' : ['-bottom-16', 'md:-bottom-20'],
+        'transition-all',
+      ]"
+    >
+      <div class="flex space-x-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        <span>An Update is Available!</span>
+      </div>
+      <button class="uppercase text-blue-400" @click="update">Update</button>
     </div>
   </div>
 </template>

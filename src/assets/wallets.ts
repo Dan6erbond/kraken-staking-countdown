@@ -24,8 +24,8 @@ export const wallets: Wallet[] = [
     walletAddress:
       "addr1q9s34mhdk9w32m6w7yme8ejprqhgsz750zv27y3e2hfcrcnprthwmv2az4h5aufhj0nyzxpw3q9ag7yc4ufrj4wns83qkadsdv",
     icon: "https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860",
-    qrCodeLogoImage:
-      "https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860",
+    /* qrCodeLogoImage:
+      "https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860", */
     walletAddressColor: "#9CA3AF",
   },
   {

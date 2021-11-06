@@ -83,7 +83,7 @@
 
   function update() {
     updateServiceWorker();
-    showUpdateAvailable.value = true;
+    showUpdateAvailable.value = false;
   }
 </script>
 

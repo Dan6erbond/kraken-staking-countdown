@@ -287,39 +287,79 @@
       </div>
     </div>
     <div
-      :class="[
-        'fixed',
-        'left-0',
-        'w-screen',
-        'h-16',
-        'md:h-20',
-        'bg-gray-700',
-        'flex',
-        'items-center',
-        'justify-between',
-        'p-6',
-        showUpdateAvailable ? 'bottom-0' : ['-bottom-16', 'md:-bottom-20'],
-        'transition-all',
-      ]"
+      class="
+        fixed
+        left-0
+        w-screen
+        h-24
+        md:h-28
+        overflow-auto
+        flex flex-col
+        space-y-2
+        bottom-0
+        p-4
+        md:p-6
+        lg:items-center
+      "
     >
-      <div class="flex space-x-2">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        <span>An Update is Available!</span>
+      <div
+        v-if="showUpdateAvailable"
+        class="
+          flex-grow
+          lg:w-3/5
+          xl:w-2/5
+          rounded
+          shadow
+          bg-gradient-to-r
+          from-gray-600
+          to-gray-700
+          flex flex-col
+          justify-center
+          space-y-1
+          border border-dark-blue-500
+        "
+      >
+        <div class="flex items-center h-full space-x-4 px-6">
+          <div class="flex space-x-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span>An Update is Available!</span>
+          </div>
+          <div class="flex-grow"></div>
+          <button class="uppercase text-blue-400" @click="update">
+            Update
+          </button>
+          <div class="border-r border-dark-blue-400 self-stretch"></div>
+          <button @click="showUpdateAvailable = false">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
-      <button class="uppercase text-blue-400" @click="update">Update</button>
     </div>
   </div>
 </template>

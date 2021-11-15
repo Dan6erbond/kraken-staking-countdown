@@ -30,7 +30,7 @@ export const wallets: Wallet[] = [
   },
   {
     currency: "SOL",
-    walletAddress: "5ENP1d54bKDZwL1jyw7qrZv9tVxnxpKkkeYApMQMZ6xD",
+    walletAddress: "7B4HB8uCJMnmJxoRjao575MFzToyVykdUSEHBJdsnk7f",
     icon: "https://assets.coingecko.com/coins/images/4128/large/coinmarketcap-solana-200.png?1616489452",
     walletAddressColor: "#9CA3AF",
   },
